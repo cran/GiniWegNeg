@@ -1,12 +1,12 @@
 GRSVc <-
-function(z,p=rep(1,length(z)),plot=FALSE){
-zp<-z*p
-N<-sum(p)
+function(z,w=rep(1,length(z)),plot=FALSE){
+zw<-z*w
+N<-sum(w)
 H<-length(z)
-t_neg<-subset(zp,zp<=0)
+t_neg<-subset(zw,zw<=0)
 T_neg<-sum(t_neg)
 T_neg
-T_pos<-sum(zp)+abs(T_neg)
+T_pos<-sum(zw)+abs(T_neg)
 T_pos
 t_intra<-rep(0,H-2)
 t<-c(T_neg,t_intra,T_pos)
@@ -16,7 +16,7 @@ for (a in 2:H)
 tord[a]<-tord[a-1]+tord[a]
 }
 tord<-tord/N
-xaxis<-cumsum(p)/N
+xaxis<-cumsum(w)/N
 xaxis
 RSV<-c(0,tord)
 p<-c(0,xaxis)
